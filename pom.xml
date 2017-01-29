@@ -115,14 +115,14 @@
         </plugins>
     </build>
     <dependencies>
-        <!-- Spigot Dependency -->
+        <!-- Bukkit Dependency -->
         <dependency>
-            <groupId>org.spigot</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.11.1-R0.1-SNAPSHOT</version>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.10.2-R0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
-        <!-- End Spigot -->
+        <!-- End Bukkit -->
         <!-- Testing Dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -147,7 +147,7 @@
         <dependency>
             <groupId>com.pneumaticraft.commandhandler</groupId>
             <artifactId>CommandHandler</artifactId>
-            <version>7</version>
+            <version>10</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
