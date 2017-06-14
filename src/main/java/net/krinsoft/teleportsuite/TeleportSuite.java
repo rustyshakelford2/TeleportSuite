@@ -2,6 +2,7 @@ package net.krinsoft.teleportsuite;
 
 import com.fernferret.allpay.AllPay;
 import com.fernferret.allpay.commons.GenericBank;
+import com.google.common.base.Charsets;
 import com.pneumaticraft.commandhandler.CommandHandler;
 import net.krinsoft.teleportsuite.commands.*;
 import net.krinsoft.teleportsuite.listeners.PlayerListener;
@@ -19,6 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -91,7 +93,8 @@ public class TeleportSuite extends JavaPlugin {
     @Override
     public FileConfiguration getConfig() {
         if (configuration == null) {
-            configuration = YamlConfiguration.loadConfiguration(configFile);
+            InputStream configStream = this.getResource("config.yml");
+            configuration = YamlConfiguration.loadConfiguration(new InputStreamReader(configStream, Charsets.UTF_8));
         }
         return configuration;
     }
@@ -145,7 +148,7 @@ public class TeleportSuite extends JavaPlugin {
     private void registerConfiguration() {
         configFile = new File(getDataFolder(), "config.yml");
         if (!configFile.exists()) {
-            getConfig().setDefaults(YamlConfiguration.loadConfiguration(this.getClass().getResourceAsStream("/config.yml")));
+            getConfig().setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getResourceAsStream("/config.yml"), Charsets.UTF_8)));
             getConfig().options().copyDefaults(true);
             saveConfig();
         }
@@ -155,7 +158,7 @@ public class TeleportSuite extends JavaPlugin {
             getConfig().set("request", null);
             getConfig().set("error", null);
             getConfig().set("message", null);
-            getConfig().setDefaults(YamlConfiguration.loadConfiguration(this.getClass().getResourceAsStream("/config.yml")));
+            getConfig().setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getResourceAsStream("/config.yml"), Charsets.UTF_8)));
             getConfig().options().copyDefaults(true);
             saveConfig();
         }
@@ -168,7 +171,7 @@ public class TeleportSuite extends JavaPlugin {
 
         userFile = new File(getDataFolder(), "users.yml");
         if (!userFile.exists()) {
-            getUsers().setDefaults(YamlConfiguration.loadConfiguration(this.getClass().getResourceAsStream("/users.yml")));
+            getUsers().setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getResourceAsStream("/users.yml"), Charsets.UTF_8)));
             getUsers().options().copyDefaults(true);
             saveUsers();
         }
@@ -206,7 +209,7 @@ public class TeleportSuite extends JavaPlugin {
             InputStream in = this.getClass().getResourceAsStream("/"+language+".yml");
             if (in != null) {
                 FileConfiguration lang = YamlConfiguration.loadConfiguration(f);
-                lang.setDefaults(YamlConfiguration.loadConfiguration(in));
+                lang.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(in, Charsets.UTF_8)));
                 if (!f.exists()) {
                     lang.options().copyDefaults(true);
                 }
