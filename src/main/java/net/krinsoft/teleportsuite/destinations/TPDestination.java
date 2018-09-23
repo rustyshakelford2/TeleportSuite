@@ -22,11 +22,7 @@ public class TPDestination {
             this.x = Double.parseDouble(locs[0]);
             this.y = Double.parseDouble(locs[1])+0.1;
             this.z = Double.parseDouble(locs[2]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            plugin.debug("An error occurred while parsing a location string.");
-        } catch (NumberFormatException e) {
-            plugin.debug("An error occurred while parsing a location string.");
-        } catch (NullPointerException e) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | NullPointerException e) {
             plugin.debug("An error occurred while parsing a location string.");
         }
     }
@@ -57,11 +53,7 @@ public class TPDestination {
             this.x = Double.parseDouble(locs[1]);
             this.y = Double.parseDouble(locs[2]);
             this.z = Double.parseDouble(locs[3]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            plugin.warn("An error occurred while parsing a location string.");
-        } catch (NumberFormatException e) {
-            plugin.warn("An error occurred while parsing a location string.");
-        } catch (NullPointerException e) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | NullPointerException e) {
             plugin.warn("An error occurred while parsing a location string.");
         }
     }

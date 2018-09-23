@@ -2,7 +2,8 @@ name: TeleportSuite
 main: net.krinsoft.teleportsuite.TeleportSuite
 version: maven-version-number
 author: krinsdeath
-load: startup
+load: STARTUP
+api-version: 1.13
 
 commands:
   #####################

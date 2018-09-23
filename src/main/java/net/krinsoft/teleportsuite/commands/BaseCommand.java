@@ -57,7 +57,7 @@ public class BaseCommand extends TeleportCommand {
         addCommandExample(line);
         List<String> lines = pages.get(page);
         if (lines == null) {
-            lines = new ArrayList<String>();
+            lines = new ArrayList<>();
         }
         lines.add(line);
         pages.put(page, lines);
@@ -93,7 +93,7 @@ public class BaseCommand extends TeleportCommand {
     }
 
     public void showPage(CommandSender sender, int page) {
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         lines.addAll(pages.get(page));
         for (String line : lines) {
             sender.sendMessage(line);
